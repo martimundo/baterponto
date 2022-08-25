@@ -1,0 +1,272 @@
+body {
+
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    grid-template-rows: 64px 1fr 64px;
+    grid-template-areas:
+        "header header"
+        "sidebar content"
+        "sidebar footer";
+    height: 100vh;
+    margin: 0;
+    background-color: #ddd;
+}
+
+body.hide-sidebar {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+        "header"
+        "content"
+        "footer";
+}
+
+/**#################################################################################################################/
+/*Menu principal*/
+header.header {
+
+    grid-area: header;
+    display: flex;
+    align-items: center;
+    background-color: #702442;
+    z-index: 10;
+    color: white;
+    -webkit-box-shadow: 2px 4px 7px 0px rgba(0, 0, 0, 0.81);
+    box-shadow: 2px 4px 7px 0px rgba(0, 0, 0, 0.81);
+}
+
+header.header .logo {
+
+    display: flex;
+    color: white;
+    font-size: 2rem;
+    flex-basis: 150px;
+    height: 64px;
+    align-items: center;
+    justify-content: center;
+
+}
+
+header.header .menu-toggle {
+    color: white;
+    cursor: pointer;
+}
+
+header.header .spacer {
+    flex: 1;
+}
+
+header.header .dropdown {
+    position: relative;
+}
+
+header.header .dropdown-button {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    font-size: 1.1rem;
+    color: white;
+    cursor: pointer;
+}
+
+header.header .dropdown-content {
+    display: none;
+    position: absolute;
+    min-width: 100%;
+    background-color: #f9f9f9;
+    padding: 15px 0px;
+    z-index: 100;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, .2);
+}
+
+header.header .dropdown:hover .dropdown-content {
+    display: block;
+}
+
+header.header .dropdown-content ul {
+
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 0;
+
+}
+
+header.header .dropdown-content a {
+
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #222;
+    padding: 7px;
+    font-size: 1.1rem;
+}
+
+header.header .dropdown-content a:hover {
+
+    background-color: rgba(0, 0, 0, .1);
+}
+
+header.header .dropdown:hover {
+
+    background-color: rgba(0, 0, 0, .1);
+}
+
+header.header .avatar{
+    height: 55px;
+    border-radius: 50%;
+    margin-left: 5px;
+}
+
+/**#################################################################################################################/
+/*Menu Side Bar - Menu Lateral*/
+aside.sidebar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    grid-area: sidebar;
+    background-color: #27446c;
+    box-shadow: -5px 0px 25px 1px rgba(0, 0, 0, .4);
+
+}
+
+aside.sidebar .menu {
+    width: 100%;
+    flex-grow: 1;
+}
+
+aside.sidebar .menu ul.nav-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+}
+
+aside.sidebar .menu li.nav-item {
+    margin: 0;
+    padding: 10px 0px 10px 25px;
+}
+
+aside.sidebar .menu li.nav-item:hover {
+    background-color: rgba(196, 67, 67, 0.1);
+}
+
+aside.sidebar .menu li.nav-item a {
+
+    font: size 1.2em;
+    color: #fff;
+    text-decoration: none;
+
+}
+
+body.hide-sidebar aside.sidebar {
+    display: none;
+}
+
+aside.sidebar .sidebar-widgets {
+    position: sticky;
+    bottom: 5px;
+    ;
+}
+
+aside.sidebar .sidebar-widget {
+    display: flex;
+    align-items: center;
+}
+
+aside.sidebar .sidebar-widget .icon {
+    font-size: 3.5rem;
+    margin: 2px 10px 2px 0px;
+}
+
+aside.sidebar .sidebar-widget .info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+}
+
+aside.sidebar .icon {
+    font-size: 3.5rem;
+}
+
+.division {
+    widows: 80%;
+    border: solid 1px #000;
+}
+
+aside.sidebar .info .main {
+    font-size: 2rem;
+}
+
+/**#################################################################################################################/*/
+/*Conteudo das paginas*/
+main.content {
+    grid-area: content;
+    background: #fff;
+    margin: 20px;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, .1);
+}
+
+main.content .content-title {
+    display: flex;
+    align-items: center;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #ccc;
+}
+
+main.content .content-title .icon {
+    font-size: 3rem;
+    ;
+}
+
+main.content .content-title h1 {
+    color: #27446c;
+    font-size: 1.8rem;
+    font-weight: 300;
+    margin: 0;
+}
+
+main.content .content-title h2 {
+    color: #702442;
+    font-size: 1.2rem;
+    font-weight: 300;
+    margin: 0;
+}
+
+/**#################################################################################################################/*/
+/*Footer*/
+footer.footer {
+    display: flex;
+    grid-area: footer;
+    background-color: #702442;
+    color: white;
+    align-items: center;
+    justify-content: end;
+    padding-right: 10px;
+    font-size: 1.2rem;
+}
+
+/*Estilos especificos*/
+
+.record {
+    font-size: 1.2rem;
+    color: #702442;
+    font-weight: 400;
+}
+.card-header p{
+    font-size:1.3rem;
+    color: #27446c;
+    font-weight: 300;
+}
+.card-header h3{
+    font-size:1.3rem;
+    color: #702442;
+    font-weight: 300;
+}
+.btn-custon{
+    background-color:#27446c;
+    color:#fff;
+}

@@ -35,7 +35,7 @@ class Model
     //Metodos mágicos usam o __get ou __set
     public function __get($key)
     {
-        return $this->values[$key];
+        //return $this->values[$key];
        
     }
 
@@ -103,17 +103,16 @@ class Model
         }
     }
 
-    public function insert()
-    {
-
-        $sql = "INSERT INTO " . static::$tableName . "(" . implode(",", static::$columns) . ") VALUES (";
-        foreach (static::$columns as $col) {
+    public function insert() {
+        $sql = "INSERT INTO " . static::$tableName . " ("
+            . implode(",", static::$columns) . ") VALUES (";
+        foreach(static::$columns as $col) {
             $sql .= static::getFormatedValue($this->$col) . ",";
+            
         }
+        $sql[strlen($sql) - 1] = ')';
         
-        $sql[strlen($sql) - 1] = ')';         
-        $id = DataBase::executeSQL($sql);
-        var_dump( $this->id = $id);
+        $id = Database::executeSQL($sql);
         $this->id = $id;
     }
 

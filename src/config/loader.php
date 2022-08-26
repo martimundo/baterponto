@@ -24,16 +24,26 @@ function loadView($viewName, $params = array())
     require_once(VIEW_PATH . "/{$viewName}.php");
 }
 
-function loadTemplateView($viewName, $params = array()){
+function loadTemplateView($viewName, $params = array())
+{
 
-    if(count($params) > 0){
+    if (count($params) > 0) {
 
-        foreach($params as $key =>$value){
-            if(strlen($key) > 0){
+        foreach ($params as $key => $value) {
+            if (strlen($key) > 0) {
                 ${$key} = $value;
             }
         }
     }
+
+    $user = $_SESSION['user'];
+    $workingHours = WorkingHours::loadFromUserAndDate($user->id, date('Y-m-d'));
+    $workedInterval = $workingHours->getWorkedInterval()->format('%H:%I:%S');
+    $exitTime = $workingHours->getExtiTime()->format('H:i:s');
+    $activeClock = $workingHours->getActiveClock();
+
+
+
     require_once(TEMPLATE_PATH . "/header.php");
     require_once(TEMPLATE_PATH . "/menu.php");
     require_once(VIEW_PATH . "/{$viewName}.php");
@@ -41,7 +51,7 @@ function loadTemplateView($viewName, $params = array()){
 }
 
 
-function renderTitle($title, $subtitle, $icon = null){
-
-    require_once(TEMPLATE_PATH .'/title.php');
+function renderTitle($title, $subtitle, $icon = null)
+{
+    require_once(TEMPLATE_PATH . '/title.php');
 }
